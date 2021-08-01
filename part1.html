@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+  .legend {
+	            padding: 5px;
+	            font: 10px sans-serif;
+	            background: yellow;
+	            box-shadow: 2px 2px 1px #888;
+            }
+</style>
+
 <meta charset="utf-8">
 
 <!-- Load d3.js -->
@@ -42,10 +51,36 @@
     var x = d3.scaleLinear()
        .domain([1965,2020])
        .range([ 0, width ]);
-     // Add Y axis
-     var y = d3.scaleLinear()
+    // Add Y axis
+    var y = d3.scaleLinear()
        .domain([0, 12])
        .range([ height, 0 ]);
+
+    var legend = svg.append("g")
+      .attr("class", "legend")
+      .attr("height", 100)
+      .attr("width", 100);
+
+    var colors = ["blue", "green", "red"]
+    var name = ["Federal Minimum Wage", "Minimum Wage Adjusted for Inflation", "Poverty Level Wage"]
+	  legend.selectAll('g').data(colors)
+      .enter()
+      .append('g')
+      .each(function(d, i) {
+        var g = d3.select(this);
+        g.append("rect")
+          .attr("x", w - 65)
+          .attr("y", i*25)
+          .attr("width", 10)
+          .attr("height", 10)
+          .style("fill", colors[i]);
+        
+        g.append("text")
+          .attr("x", w - 50)
+          .attr("y", i * 25 + 8)
+          .attr("height",30)
+          .attr("width",100)
+          .text(name[i]);
 
     
     //Read the data
