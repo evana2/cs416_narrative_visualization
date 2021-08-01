@@ -39,21 +39,23 @@
     
     //Read the data
     d3.csv("MinimumWage.csv", function(data) {
-    
-        // Add X axis --> it is a date format
-        var x = d3.scaleTime()
-          .domain(d3.extent(data, function(d) { return d.date; }))
-          .range([ 0, width ]);
-        svg.append("g")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(x));
-    
-        // Add Y axis
-        var y = d3.scaleLinear()
-          .domain([0, d3.max(data, function(d) { return +d.value; })])
-          .range([ height, 0 ]);
-        svg.append("g")
-          .call(d3.axisLeft(y));
+        var scale_x = d3.scaleLinear().domain([0,10]).range([500,0])
+        var x_axis = d3.axisLeft().scale(scale_x);
+            d3.select("svg").append("g").attr("transform","translate(50,50)")
+            .attr('fill',"none")
+            .attr('font-size',"10")
+            .attr('font-family',"sans-serif")
+            .attr('text-anchor',"end")
+            .call(x_axis)
+
+        var scale_y = d3.scaleLinear().domain([1960,2000]).range([0,500])
+        var x_axis = d3.axisBottom().scale(scale_y);
+            d3.select("svg").append("g").attr("transform","translate(50,450)")
+            .attr('fill',"none")
+            .attr('font-size',"10")
+            .attr('font-family',"sans-serif")
+            .attr('text-anchor',"end")
+            .call(y_axis)
     
         // Add the line
         svg.append("path")
@@ -62,8 +64,8 @@
           .attr("stroke", "steelblue")
           .attr("stroke-width", 1.5)
           .attr("d", d3.line()
-            .x(function(d) { return x(d.date) })
-            .y(function(d) { return y(d.value) })
+            .x(function(d) { return scale_x(d.Date) })
+            .y(function(d) { return scale_y(d.FederalMinimumWage_nominal_dollars) })
             )
     
     })
