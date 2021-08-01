@@ -177,8 +177,8 @@
       function mousemove() {
         // recover coordinate we need
         var x0 = x.invert(d3.mouse(this)[0]);
-        var i = bisect(data_wages, x0, 1);
-        selectedData = data_wages[i]
+        var i = bisect(data, x0, 1);
+        selectedData = data[i]
         focus
           .attr("cx", x(selectedData.x))
           .attr("cy", y(selectedData.y))
