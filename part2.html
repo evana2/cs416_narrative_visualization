@@ -32,40 +32,40 @@
         .attr("transform","translate(50,50)");
     
     //Read the data
-    d3.csv("MinimumWage.csv", function(data) {
-        var scale_x = d3.scaleLinear().domain([0,10]).range([400,0])
-        var x_axis = d3.axisLeft().scale(scale_x);
-            d3.select("svg").append("g").attr("transform","translate(50,50)")
-            .attr('fill',"none")
-            .attr('font-size',"10")
-            .attr('font-family',"sans-serif")
-            .attr('text-anchor',"end")
-            .call(x_axis)
+    dataWage = d3.csv("MinimumWage.csv", function(data) {
 
-        var scale_y = d3.scaleLinear().domain([1960,2000]).range([0,500])
-        var y_axis = d3.axisBottom().scale(scale_y);
-            d3.select("svg").append("g").attr("transform","translate(50,450)")
-            .attr('fill',"none")
-            .attr('font-size',"10")
-            .attr('font-family',"sans-serif")
-            .attr('text-anchor',"end")
-            .call(y_axis)
+    var scale_x = d3.scaleLinear().domain([0,10]).range([400,0])
+    var x_axis = d3.axisLeft().scale(scale_x);
+        d3.select("svg").append("g").attr("transform","translate(50,50)")
+        .attr('fill',"none")
+        .attr('font-size',"10")
+        .attr('font-family',"sans-serif")
+        .attr('text-anchor',"end")
+        .call(x_axis)
+
+    var scale_y = d3.scaleLinear().domain([1960,2000]).range([0,500])
+    var y_axis = d3.axisBottom().scale(scale_y);
+        d3.select("svg").append("g").attr("transform","translate(50,450)")
+        .attr('fill',"none")
+        .attr('font-size',"10")
+        .attr('font-family',"sans-serif")
+        .attr('text-anchor',"end")
+        .call(y_axis)
     
-        // Add the line
-        svg.append("path")
-          .data(data)
-          .attr("fill", "none")
-          .attr("stroke", "steelblue")
-          .attr("stroke-width", 1.5)
-          .attr("d", d3.line()
-            .x(function(d) { 
-                console.log(scale_x(d.FederalMinimumWage_nominal_dollars));
-                console.log(d.FederalMinimumWage_nominal_dollars);
-                return scale_x(d.FederalMinimumWage_nominal_dollars) })
-            .y(function(d) { return scale_y(d.Date) })
-            )
+        //line
+    var line = d3.svg.line()
+        .x(function(d) { return x(d.FederalMinimumWage_nominal_dollars); })
+        .y(function(d) { return y(d.Date); });
+    svg.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 1.5)
+      .attr("class", "line")
+      .attr("d", line);
+  
     
-    })
+    });
     
     </script>
 </html>
