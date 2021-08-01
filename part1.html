@@ -23,7 +23,7 @@
     <script> 
         var svg = d3.select("svg")
         var x = d3.scaleLinear()
-            .domain([1960,2020])
+            .domain([0,10])
             .range([ 0, 500]);
         var y = d3.scaleLinear()
             .domain([0, 10])
@@ -59,75 +59,8 @@
                 .x(function(d) { return x(d.FederalMinimumWage_nominal_dollars) })
                 .y(function(d) { return y(d.Date) }))
 
-            
-            // // Create a rect on top of the svg area: this rectangle recovers mouse position
-            // svg
-            //     .append('rect')
-            //     .style("fill", "none")
-            //     .style("pointer-events", "all")
-            //     .attr('width', 500)
-            //     .attr('height', 500)
-            //     .on('mouseover', mouseover)
-            //     .on('mousemove', mousemove)
-            //     .on('mouseout', mouseout);
-
-
-            // // What happens when the mouse move -> show the annotations at the right positions.
-            // function mouseover() {
-            //     focus.style("opacity", 1)
-            //     focusText.style("opacity",1)
-            // }
-
-            // function mousemove() {
-            //     // recover coordinate we need
-            //     var x0 = x.invert(d3.mouse(this)[0]);
-            //     var i = bisect(data, x0, 1);
-            //     selectedData = data[i]
-            //     focus
-            //     .attr("cx", x(selectedData.x))
-            //     .attr("cy", y(selectedData.y))
-            //     focusText
-            //     .html("x:" + selectedData.x + "  -  " + "y:" + selectedData.y)
-            //     .attr("x", x(selectedData.x)+15)
-            //     .attr("y", y(selectedData.y))
-            //     }
-            // function mouseout() {
-            //     focus.style("opacity", 0)
-            //     focusText.style("opacity", 0)
-            // }
-
             })
 
-        d3.csv("PovertyLevelWages.csv", function(data) {
-            //x axis
-            svg.append("g")
-                .attr("transform", "translate(0,500)")
-                .call(d3.axisBottom(x));
-            //y axis
-            svg.append("g")
-                .call(d3.axisLeft(y));
-            //data
-            svg.append("path")
-                .datum(data)
-                .attr("fill", "none")
-                .attr("stroke", "red")
-                .attr("stroke-width", 1.5)
-                .attr("d", d3.line()
-                .x(function(d) { return x(d.HourlyPoverty_levelWage) })
-                .y(function(d) { return y(d.Date) }))
-        })
-        // },  
-        // var xs = d3.scaleLinear().domain([0,10]).range([0,200]);
-        // var ys = d3.scaleLinear().domain([0,2000]).range([0,200]);
-        // var data = 
-        // d3.select('svg').select('g')
-        //     .selectAll('rect')
-        //     .data(data)
-        //     .enter()
-        //     .append('rect')
-        //         .attr('x',function(d,i) {return xs(i);})
-        //         .attr('y',function(d) {return 200 - (d*(200/42))})
-        //         .attr('width',scale_y.bandwidth())
-        //         .attr('height',function(d) {return d * 4.7619047619})
+      
     </script>
 </html>
