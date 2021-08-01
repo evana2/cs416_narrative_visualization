@@ -70,9 +70,9 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 
 		
 // Define linear scale for output
-var mycolor = d3.scale.linear().domain([0,10]).range(['grey','red']);
+var mycolor = d3.scale.linear().domain([0,7.25,10]).range(['red', 'grey','blue']);
 
-var legendText = ["$10", "$0"];
+var legendText = ["$0, $7.25", "$0"];
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")

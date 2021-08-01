@@ -61,10 +61,8 @@
       .attr("height", 100)
       .attr("width", 100);
 
-    var name = ["Federal Minimum Wage", "Minimum Wage Adjusted for Inflation", "Poverty Level Wage"]
-	  legend.selectAll('g').data(colors)
-      .enter()
-      .append('g')
+    //var name = ["Federal Minimum Wage", "Minimum Wage Adjusted for Inflation", "Poverty Level Wage"]
+	  legend.append('g')
         .append("rect")
           .attr("x", 400)
           .attr("y", 25)
