@@ -67,7 +67,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 
 		
 // Define linear scale for output
-var color = d3.scale.linear().range(['grey','blue']);
+var color = d3.scale.linear().domain([0,15]).range(['grey','blue']);
 
 var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
 
