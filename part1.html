@@ -178,10 +178,14 @@
         // recover coordinate we need
         var x0 = x.invert(d3.mouse(this)[0]);
         console.log(x0)
-        console.log(data)
-        var i = bisect(data, x0);
-        console.log(i)
-        selectedData = data[i]
+        var xprime = Math.roung(x0)
+        var closest_point = data[0]
+        for (var i = 0; i < data.length; i++) {
+	        closest_point = data[i].State;
+
+
+        console.log(closest_point)
+        selectedData = closest_point
         console.log(selectedData)
         focus
           .attr("cx", x(selectedData.x))
