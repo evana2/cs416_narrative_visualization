@@ -33,24 +33,14 @@
             console.log(data.FederalMinimumWage_nominal_dollars);  
             //x axis
             svg.append("g")
-                .attr("transform", "translate(0,500)")
+                .attr("transform", "translate(0,0)")
                 .call(d3.axisBottom(x));
             //y axis
             svg.append("g")
                 .call(d3.axisLeft(y));
             
-            //highlight
-            var bisect = d3.bisector(function(d) { return d.x; }).left;
-            var focus = svg
-                .append('g')
-                .append('circle')
-                    .style("fill", "none")
-                    .attr("stroke", "black")
-                    .attr('r', 8.5)
-                    .style("opacity", 0)
-
             //data
-            svg.append("path")
+            svg.append("g").append("path")
                 .datum(data)
                 .attr("fill", "none")
                 .attr("stroke", "steelblue")
