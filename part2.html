@@ -53,7 +53,7 @@
         .call(y_axis)
     
         //line
-    var line = d3.svg.line()
+    var line = d3.line()
         .x(function(d) { return x(d.FederalMinimumWage_nominal_dollars); })
         .y(function(d) { return y(d.Date); });
     svg.append("path")
