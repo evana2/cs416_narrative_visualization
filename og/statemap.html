@@ -38,6 +38,7 @@ body {
 </style>
 </head>
 <body>
+<h1>Minimum Wage 2017</h1>
 <script type="text/javascript">
 
 /*  This visualization was made possible by modifying code provided by:
@@ -67,9 +68,9 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 
 		
 // Define linear scale for output
-var mycolor = d3.scale.linear().domain([0,15]).range(['white','red']);
+var mycolor = d3.scale.linear().domain([0,10]).range(['grey','red']);
 
-var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
+var legendText = ["$10", "$0"];
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
@@ -165,6 +166,6 @@ var legend = d3.select("body").append("svg")
 
 });
 </script>
-<h1>Hello There</h1>
+<p>Federal Wage: 7.25</p>
 </body>
 </html>
