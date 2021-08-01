@@ -67,7 +67,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 
 		
 // Define linear scale for output
-var color = d3.scale.linear().domain([0,15]).range(['grey','blue']);
+var mycolor = d3.scale.linear().domain([0,150]).range(['grey','blue']);
 
 var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
 
@@ -85,7 +85,6 @@ var div = d3.select("body")
 
 // Load in my states data!
 d3.csv("MinimumWageData.csv", function(data) {
-color.domain([0,1,2,3]); // setting the range of the input data
 
 // Load GeoJSON data and merge with states data
 d3.json("us.json", function(json) {
@@ -133,7 +132,7 @@ svg.selectAll("path")
 
 	if (value) {
 	    //If value exists…
-	    return color(value);
+	    return mycolor(value*10);
 	} else {
 	    //If value is undefined…
 	    return "rgb(213,222,217)";
@@ -146,7 +145,7 @@ var legend = d3.select("body").append("svg")
      			.attr("width", 140)
     			.attr("height", 200)
    				.selectAll("g")
-   				.data(color.domain().slice().reverse())
+   				.data(mycolor.domain().slice().reverse())
    				.enter()
    				.append("g")
      			.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
@@ -154,7 +153,7 @@ var legend = d3.select("body").append("svg")
   	legend.append("rect")
    		  .attr("width", 18)
    		  .attr("height", 18)
-   		  .style("fill", color);
+   		  .style("fill", mycolor);
 
   	legend.append("text")
   		  .data(legendText)
