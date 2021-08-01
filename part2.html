@@ -70,9 +70,50 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 
 		
 // Define linear scale for output
-var mycolor = d3.scale.linear().domain([0,7.25,10]).range(['red', 'grey','blue']);
-
-var legendText = ["$0, $7.25", "$0"];
+var mycolor = d3.scale.linear().domain([0,7.25,14]).range(['red', 'grey','blue']);
+var legend = svg.append("g")
+      .attr("class", "legend")
+      .attr("height", 100)
+      .attr("width", 100)
+      .attr("transform","translate(300,250)");
+    legend.append("rect")
+      .attr("y",100)
+      .attr("x", 75)
+      .style("fill", "grey")
+    //var name = ["Federal Minimum Wage", "Minimum Wage Adjusted for Inflation", "Poverty Level Wage"]
+	  legend.append("rect")
+          .attr("y", 25)
+          .attr("width", 10)
+          .attr("height", 10)
+          .style("fill", "red")
+    legend.append("rect")
+          .attr("y", 50)
+          .attr("width", 10)
+          .attr("height", 10)
+          .style("fill", "grey")
+    legend.append("rect")
+          .attr("y", 75)
+          .attr("width", 10)
+          .attr("height", 10)
+          .style("fill", "blue")
+    legend.append("text")
+          .attr("x", 25)
+          .attr("y", 1 * 25 + 8)
+          .attr("height",30)
+          .attr("width",100)
+          .text("$0")
+    legend.append("text")
+          .attr("x", 25)
+          .attr("y", 2 * 25 + 8)
+          .attr("height",30)
+          .attr("width",100)
+          .text("$7.25 - Matches Federal")
+    legend.append("text")
+          .attr("x", 25)
+          .attr("y", 3 * 25 + 8)
+          .attr("height",30)
+          .attr("width",100)
+          .text("$14")
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
