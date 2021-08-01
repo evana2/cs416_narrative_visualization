@@ -61,27 +61,46 @@
       .attr("height", 100)
       .attr("width", 100);
 
-    var colors = ["blue", "green", "red"]
     var name = ["Federal Minimum Wage", "Minimum Wage Adjusted for Inflation", "Poverty Level Wage"]
 	  legend.selectAll('g').data(colors)
       .enter()
       .append('g')
-      .each(function(d, i) {
-        var g = d3.select(this);
-        g.append("rect")
+        .append("rect")
           .attr("x", 400)
-          .attr("y", i*25)
+          .attr("y", 25)
           .attr("width", 10)
           .attr("height", 10)
-          .style("fill", colors[i]);
-        
-        g.append("text")
+          .style("fill", "steelblue")
+        .append("rect")
           .attr("x", 400)
-          .attr("y", i * 25 + 8)
+          .attr("y", 50)
+          .attr("width", 10)
+          .attr("height", 10)
+          .style("fill", "green")
+        .append("rect")
+          .attr("x", 400)
+          .attr("y", 75)
+          .attr("width", 10)
+          .attr("height", 10)
+          .style("fill", "red")
+        .append("text")
+          .attr("x", 400)
+          .attr("y", 1 * 25 + 8)
           .attr("height",30)
           .attr("width",100)
-          .text(name[i]);
-        });
+          .text("Federal Minimum Wage")
+        .append("text")
+          .attr("x", 400)
+          .attr("y", 2 * 25 + 8)
+          .attr("height",30)
+          .attr("width",100)
+          .text("Adjusted For Infration")
+        .append("text")
+          .attr("x", 400)
+          .attr("y", 3 * 25 + 8)
+          .attr("height",30)
+          .attr("width",100)
+          .text("Poverty Wage")
     
     //Read the data
     d3.csv("MinimumWage.csv",

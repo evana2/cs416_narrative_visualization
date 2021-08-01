@@ -87,7 +87,7 @@ var div = d3.select("body")
     		.style("opacity", 0);
 
 // Load in my states data!
-d3.csv("MinimumWage.csv", function(data) {
+d3.csv("MinimumWageState.csv", function(data) {
 
 // Load GeoJSON data and merge with states data
 d3.json("us.json", function(json) {
@@ -103,7 +103,7 @@ for (var i = 0; i < data.length; i++) {
 	var dataState = data[i].State;
 
 	// Grab data value 
-	var dataValue = data[i].HighValue;
+	var dataValue = data[i].MinWage;
 
 	// Find the corresponding state inside the GeoJSON
 	for (var j = 0; j < json.features.length; j++)  {
