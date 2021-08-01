@@ -58,7 +58,10 @@
           .attr("stroke", "steelblue")
           .attr("stroke-width", 1.5)
           .attr("d", d3.line()
-            .x(function(d) { return scale_x(d.FederalMinimumWage_nominal_dollars) })
+            .x(function(d) { 
+                console.log(scale_x(d.FederalMinimumWage_nominal_dollars));
+                console.log(d.FederalMinimumWage_nominal_dollars);
+                return scale_x(d.FederalMinimumWage_nominal_dollars) })
             .y(function(d) { return scale_y(d.Date) })
             )
     
