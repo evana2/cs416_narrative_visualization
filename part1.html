@@ -191,11 +191,11 @@
         console.log(selectedData)
         focus
           .attr("cx", x(selectedData.Date))
-          .attr("cy", y(selectedData.y))
+          .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
         focusText
           .html("x:" + selectedData.Date + "  -  " + "y:" + selectedData.y)
           .attr("x", x(selectedData.Date)+15)
-          .attr("y", y(selectedData.HourlyPovertyLevelWage))
+          .attr("y", y(selectedData.FederalMinimumWage_nominal_dollars))
         }
       function mouseout() {
         focus.style("opacity", 0)
