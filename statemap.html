@@ -67,7 +67,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 
 		
 // Define linear scale for output
-var mycolor = d3.scale.linear().domain([0,150]).range(['grey','blue']);
+var mycolor = d3.scale.linear().domain([0,15]).range(['grey','blue']);
 
 var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
 
@@ -132,7 +132,7 @@ svg.selectAll("path")
 
 	if (value) {
 	    //If value exists…
-	    return mycolor(value*10);
+	    return mycolor(value);
 	} else {
 	    //If value is undefined…
 	    return "rgb(213,222,217)";
