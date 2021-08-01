@@ -25,12 +25,7 @@
     
     //Read the data
     d3.csv("MinimumWage.csv",
-    
-      // When reading the csv, I must format variables:
-      function(d){
-        return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.FederalMinimumWage_nominal_dollars }
-      },
-    
+   
       // Now I can use this dataset:
       function(data) {
     
