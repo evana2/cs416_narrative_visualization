@@ -80,8 +80,10 @@
           .attr("stroke", "green")
           .attr("stroke-width", 1.5)
           .attr("d", d3.line()
-            .x(function(d) { return x(d.Date) })
-            .y(function(d) { return y(d.FederalMinimum2018dollars) })
+            .x(function(d) { console.log(d.Date);
+              return x(d.Date) })
+            .y(function(d) { console.log(d.FederalMinimum2018dollars);
+              return y(d.FederalMinimum2018dollars) })
             )    
     })
 
