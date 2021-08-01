@@ -80,11 +80,13 @@ var legend = d3.select("svg").append("g")
       .attr("class", "legend")
       .attr("height", 100)
       .attr("width", 100)
-      .attr("transform","translate(300,250)");
+      .attr("transform","translate(800,350)");
     legend.append("rect")
-      .attr("width",100)
-      .attr("height", 75)
-      .style("fill", "grey")
+	  .attr("x",-5)
+      .attr("y,20")
+      .attr("width",150)
+      .attr("height", 70)
+      .style("fill", "#ccd0d0")
     //var name = ["Federal Minimum Wage", "Minimum Wage Adjusted for Inflation", "Poverty Level Wage"]
 	  legend.append("rect")
           .attr("y", 25)
