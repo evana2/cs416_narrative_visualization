@@ -1,80 +1,105 @@
-<!DOCTYPE hyml>
+<!DOCTYPE html>
 <html>
-    <script src='https://d3js.org/d3.v5.min.js'></script>
-    <style> path {stroke: black;}</style>
-    <svg width=500 height=500>
-    </svg>
+<meta charset="utf-8">
 
-    <body>
-        <h3>Federal Wage</h3>
-        <p style="text-align:left;">
-            <a href="index.html">Previous</a>
-            <span style="float:right;">
-                <a href="part2.html">Next</a>
-            </span>
-        </p>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
 
-        <p>
-            As of July 2009, the federal minimum wage is $7.25 an hour. There are notable exceptions on who does not make this wage including people who make tips and those with disabilities, the Federal minimum wage still has a large impact in the United States. 
-        </p>
-    </body>
+<body>
+    <h3>Federal Wage</h3>
+    <p style="text-align:left;">
+        <a href="index.html">Previous</a>
+        <span style="float:right;">
+            <a href="part2.html">Next</a>
+        </span>
+    </p>
 
-    <script>
+    <p>
+        As of July 2009, the federal minimum wage is $7.25 an hour. There are notable exceptions on who does not make this wage including people who make tips and those with disabilities, the Federal minimum wage still has a large impact in the United States. 
+    </p>
+</body>
+
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 200, right: 50, bottom: 30, left: 60},
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
     
-        // append the svg object to the body of the page
-        var svg = d3.select("#my_dataviz")
-          .append("svg")
-            .attr("width", 600)
-            .attr("height", 600)
-          .append("g")
-            .attr("transform","translate(50,50)");
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("MinimumWage.csv",
+   
+      // Now I can use this dataset:
+      function(data) {
+    
+        // Add X axis --> it is a date format
+        var x = d3.scaleLinear()
+          .domain([1965,2020])
+          .range([ 0, width ]);
+        svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x));
+    
+        // Add Y axis
+        var y = d3.scaleLinear()
+          .domain([0, 10])
+          .range([ height, 0 ]);
+        svg.append("g")
+          .call(d3.axisLeft(y));
         
-        //Read the data
-        dataWage = d3.csv("MinimumWage.csv", function(data) {
-    
-        var scale_x = d3.scaleLinear().domain([0,10]).range([400,0])
-        var x_axis = d3.axisLeft().scale(scale_x);
-            d3.select("svg").append("g").attr("transform","translate(50,50)")
-            .attr('fill',"none")
-            .attr('font-size',"10")
-            .attr('font-family',"sans-serif")
-            .attr('text-anchor',"end")
-            .call(x_axis)
-    
-        var scale_y = d3.scaleLinear().domain([1960,2000]).range([0,500])
-        var y_axis = d3.axisBottom().scale(scale_y);
-            d3.select("svg").append("g").attr("transform","translate(50,450)")
-            .attr('fill',"none")
-            .attr('font-size',"10")
-            .attr('font-family',"sans-serif")
-            .attr('text-anchor',"end")
-            .call(y_axis)
-        
-            //line
-        var line = d3.line()
-            .x(function(d) { return x(d.Date); })
-            .y(function(d) { return y(d.FederalMinimumWage_nominal_dollars); });
-        d3.select("svg").append("g").append("path")
+        // Add the line
+        svg.append("path")
           .datum(data)
           .attr("fill", "none")
           .attr("stroke", "steelblue")
           .attr("stroke-width", 1.5)
-          .attr("class", "line")
-          .attr("d", line);
-      
-          d3.select("svg").append("g").append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("d", d3.line()
-                .x(function(d) { return x(d.Date) })
-                .y(function(d) { return y(d.FederalMinimumWage_nominal_dollars) })
-        )
+          .attr("d", d3.line()
+            .x(function(d) {         
+                console.log(d.Date);
+                return x(d.Date) })
+            .y(function(d) { console.log(d.FederalMinimumWage_nominal_dollars);
+                return y(d.FederalMinimumWage_nominal_dollars) })
+            )    
+    })
 
+     //Read the data
+     d3.csv("PovertyLevelWages.csv",
+   
+    // Now I can use this dataset:
+    function(data) {
+ 
+     // Add X axis
+     var x = d3.scaleLinear()
+       .domain([1965,2020])
+       .range([ 0, width ]);
+     // Add Y axis
+     var y = d3.scaleLinear()
+       .domain([0, 10])
+       .range([ height, 0 ]);
+     
+     // Add the line
+     svg.append("path")
+       .datum(data)
+       .attr("fill", "none")
+       .attr("stroke", "red")
+       .attr("stroke-width", 1.5)
+       .attr("d", d3.line()
+         .x(function(d) { return x(d.Date) })
+         .y(function(d) { return y(d.HourlyPovertyLevelWage) })
+         )    
+ })
 
-        });
-
-        
-        </script>
-    </html>
+    </script>
+</html> 
