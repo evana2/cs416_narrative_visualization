@@ -181,7 +181,7 @@
         var xprime = Math.round(x0)
         var closest_point = data[0]
         for (var i = 0; i < data.length; i++) {
-	        closest_point = data[i].State;
+	        closest_point = data[i].Date;
         }
 
 
@@ -189,12 +189,12 @@
         selectedData = closest_point
         console.log(selectedData)
         focus
-          .attr("cx", x(selectedData.x))
+          .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.y))
         focusText
-          .html("x:" + selectedData.x + "  -  " + "y:" + selectedData.y)
-          .attr("x", x(selectedData.x)+15)
-          .attr("y", y(selectedData.y))
+          .html("x:" + selectedData.Date + "  -  " + "y:" + selectedData.y)
+          .attr("x", x(selectedData.Date)+15)
+          .attr("y", y(selectedData.HourlyPovertyLevelWage))
         }
       function mouseout() {
         focus.style("opacity", 0)
