@@ -48,14 +48,11 @@
        .range([ height, 0 ]);
 
     //make a legend
-    var gLegend = d3.select("svg").append("g") 
-    gLegend.attr("transform","translate(400, 500)")
-    gLegend.append("circle").attr("cx",0).attr("cy",30).attr("r", 6).style("fill", "blue")
-            .append("circle").attr("cx",0).attr("cy",40).attr("r", 6).style("fill", "green")
-            .append("circle").attr("cx",0).attr("cy",50).attr("r", 6).style("fill", "red")
-            .append("text").attr("x", 20).attr("y", 30).text("Federal Minimum Wage").style("font-size", "15px").attr("alignment-baseline","middle")
-            .append("text").attr("x", 20).attr("y", 40).text("Wage Adjusted for Inflation").style("font-size", "15px").attr("alignment-baseline","middle")
-            .append("text").attr("x", 20).attr("y", 50).text("Hourly Wage to Meet Poverty Level").style("font-size", "15px").attr("alignment-baseline","middle")
+    legend = svg.append("g")
+      .attr("class","legend")
+      .attr("transform","translate(50,30)")
+      .style("font-size","12px")
+      .call(d3.legend)
 
     //Read the data
     d3.csv("MinimumWage.csv",
