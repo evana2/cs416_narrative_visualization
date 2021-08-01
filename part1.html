@@ -69,14 +69,14 @@
       .each(function(d, i) {
         var g = d3.select(this);
         g.append("rect")
-          .attr("x", w - 65)
+          .attr("x", 400)
           .attr("y", i*25)
           .attr("width", 10)
           .attr("height", 10)
           .style("fill", colors[i]);
         
         g.append("text")
-          .attr("x", w - 50)
+          .attr("x", 400)
           .attr("y", i * 25 + 8)
           .attr("height",30)
           .attr("width",100)
