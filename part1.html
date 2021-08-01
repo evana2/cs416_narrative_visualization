@@ -178,6 +178,7 @@
         // recover coordinate we need
         var x0 = x.invert(d3.mouse(this)[0]);
         console.log(x0)
+        console.log(data)
         var i = bisect(data, x0);
         console.log(i)
         selectedData = data[i]

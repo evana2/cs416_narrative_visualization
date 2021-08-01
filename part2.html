@@ -140,11 +140,9 @@ d3.json("us.json", function(json) {
 for (var i = 0; i < data.length; i++) {
 	// Grab State Name
 	var dataState = data[i].State;
-	console.log(dataState)
 
 	// Grab data value 
 	var dataValue = data[i].MinWage;
-	console.log(dataValue)
 
 	// Find the corresponding state inside the GeoJSON
 	for (var j = 0; j < json.features.length; j++)  {
