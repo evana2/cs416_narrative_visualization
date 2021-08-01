@@ -54,41 +54,41 @@
                 .y(function(d) { return y(d.Date) }))
 
             
-            // Create a rect on top of the svg area: this rectangle recovers mouse position
-            svg
-                .append('rect')
-                .style("fill", "none")
-                .style("pointer-events", "all")
-                .attr('width', 500)
-                .attr('height', 500)
-                .on('mouseover', mouseover)
-                .on('mousemove', mousemove)
-                .on('mouseout', mouseout);
+            // // Create a rect on top of the svg area: this rectangle recovers mouse position
+            // svg
+            //     .append('rect')
+            //     .style("fill", "none")
+            //     .style("pointer-events", "all")
+            //     .attr('width', 500)
+            //     .attr('height', 500)
+            //     .on('mouseover', mouseover)
+            //     .on('mousemove', mousemove)
+            //     .on('mouseout', mouseout);
 
 
-            // What happens when the mouse move -> show the annotations at the right positions.
-            function mouseover() {
-                focus.style("opacity", 1)
-                focusText.style("opacity",1)
-            }
+            // // What happens when the mouse move -> show the annotations at the right positions.
+            // function mouseover() {
+            //     focus.style("opacity", 1)
+            //     focusText.style("opacity",1)
+            // }
 
-            function mousemove() {
-                // recover coordinate we need
-                var x0 = x.invert(d3.mouse(this)[0]);
-                var i = bisect(data, x0, 1);
-                selectedData = data[i]
-                focus
-                .attr("cx", x(selectedData.x))
-                .attr("cy", y(selectedData.y))
-                focusText
-                .html("x:" + selectedData.x + "  -  " + "y:" + selectedData.y)
-                .attr("x", x(selectedData.x)+15)
-                .attr("y", y(selectedData.y))
-                }
-            function mouseout() {
-                focus.style("opacity", 0)
-                focusText.style("opacity", 0)
-            }
+            // function mousemove() {
+            //     // recover coordinate we need
+            //     var x0 = x.invert(d3.mouse(this)[0]);
+            //     var i = bisect(data, x0, 1);
+            //     selectedData = data[i]
+            //     focus
+            //     .attr("cx", x(selectedData.x))
+            //     .attr("cy", y(selectedData.y))
+            //     focusText
+            //     .html("x:" + selectedData.x + "  -  " + "y:" + selectedData.y)
+            //     .attr("x", x(selectedData.x)+15)
+            //     .attr("y", y(selectedData.y))
+            //     }
+            // function mouseout() {
+            //     focus.style("opacity", 0)
+            //     focusText.style("opacity", 0)
+            // }
 
             })
 
