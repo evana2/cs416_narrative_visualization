@@ -19,36 +19,51 @@
         </p>
     </body>
 
-    <script> 
-        var svg = d3.select("svg")
-        var x = d3.scaleLinear()
-            .domain([0,10])
-            .range([ 0, 500]);
-        var y = d3.scaleLinear()
-            .domain([0, 10])
-            .range([500, 0]);
+    <script>
+    
+        // append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+          .append("svg")
+            .attr("width", 600)
+            .attr("height", 600)
+          .append("g")
+            .attr("transform","translate(50,50)");
         
-        d3.csv("MinimumWage.csv", function(data){
-            console.log(data.FederalMinimumWage_nominal_dollars);  
-            //x axis
-            svg.append("g")
-                .attr("transform", "translate(0,500)")
-                .call(d3.axisBottom(x));
-            //y axis
-            svg.append("g")
-                .call(d3.axisLeft(y));
-            
-            //data
-            svg.append("g").append("path")
-                .datum(data)
-                .attr("fill", "none")
-                .attr("stroke", "steelblue")
-                .attr("stroke-width", 1.5)
-                .attr("d", d3.line()
-                .x(function(d) { return x(d.Date) })
-                .y(function(d) { return y(d.FederalMinimumWage_nominal_dollars) }))
-            })
-
+        //Read the data
+        dataWage = d3.csv("MinimumWage.csv", function(data) {
+    
+        var scale_x = d3.scaleLinear().domain([0,10]).range([400,0])
+        var x_axis = d3.axisLeft().scale(scale_x);
+            d3.select("svg").append("g").attr("transform","translate(50,50)")
+            .attr('fill',"none")
+            .attr('font-size',"10")
+            .attr('font-family',"sans-serif")
+            .attr('text-anchor',"end")
+            .call(x_axis)
+    
+        var scale_y = d3.scaleLinear().domain([1960,2000]).range([0,500])
+        var y_axis = d3.axisBottom().scale(scale_y);
+            d3.select("svg").append("g").attr("transform","translate(50,450)")
+            .attr('fill',"none")
+            .attr('font-size',"10")
+            .attr('font-family',"sans-serif")
+            .attr('text-anchor',"end")
+            .call(y_axis)
+        
+            //line
+        var line = d3.line()
+            .x(function(d) { return x(d.Date); })
+            .y(function(d) { return y(d.FederalMinimumWage_nominal_dollars); });
+        svg.append("path")
+          .datum(data)
+          .attr("fill", "none")
+          .attr("stroke", "steelblue")
+          .attr("stroke-width", 1.5)
+          .attr("class", "line")
+          .attr("d", line);
       
-    </script>
-</html>
+        
+        });
+        
+        </script>
+    </html>
