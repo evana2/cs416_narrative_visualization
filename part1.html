@@ -48,7 +48,7 @@
        .range([ height, 0 ]);
 
     //make a legend
-    d3,select("svg").append("g")
+    d3.select("svg").append("g") .attr("transform","translate(300,300)")
         .append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "blue")
         .append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "green")
         .append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "red")
