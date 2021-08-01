@@ -15,7 +15,7 @@
     </p>
 
     <p>
-        As of July 2009, the federal minimum wage is $7.25 an hour. There are notable exceptions on who does not make this wage including people who make tips and those with disabilities, the Federal minimum wage still has a large impact in the United States. 
+        As of July 2009, the federal minimum wage is $7.25 an hour. When originally introduced the minimum wage was close to the poverty wage, but over time has not been increased to keep up with that level or even inflation.
     </p>
 </body>
 
@@ -69,11 +69,19 @@
           .attr("stroke", "steelblue")
           .attr("stroke-width", 1.5)
           .attr("d", d3.line()
-            .x(function(d) {         
-                console.log(d.Date);
-                return x(d.Date) })
-            .y(function(d) { console.log(d.FederalMinimumWage_nominal_dollars);
-                return y(d.FederalMinimumWage_nominal_dollars) })
+            .x(function(d) { return x(d.Date) })
+            .y(function(d) { return y(d.FederalMinimumWage_nominal_dollars) })
+            )    
+        
+        // Add the line
+        svg.append("path")
+          .datum(data)
+          .attr("fill", "none")
+          .attr("stroke", "green")
+          .attr("stroke-width", 1.5)
+          .attr("d", d3.line()
+            .x(function(d) { return x(d.Date) })
+            .y(function(d) { return y(d.FederalMinimum2018dollars) })
             )    
     })
 
