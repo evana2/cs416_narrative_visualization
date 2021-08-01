@@ -43,7 +43,7 @@
             .call(x_axis)
 
         var scale_y = d3.scaleLinear().domain([1960,2000]).range([0,500])
-        var x_axis = d3.axisBottom().scale(scale_y);
+        var y_axis = d3.axisBottom().scale(scale_y);
             d3.select("svg").append("g").attr("transform","translate(50,450)")
             .attr('fill',"none")
             .attr('font-size',"10")
@@ -58,8 +58,8 @@
           .attr("stroke", "steelblue")
           .attr("stroke-width", 1.5)
           .attr("d", d3.line()
-            .x(function(d) { return scale_x(d.Date) })
-            .y(function(d) { return scale_y(d.FederalMinimumWage_nominal_dollars) })
+            .x(function(d) { return scale_x(d.FederalMinimumWage_nominal_dollars) })
+            .y(function(d) { return scale_y(d.Date) })
             )
     
     })
