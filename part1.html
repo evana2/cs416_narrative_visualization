@@ -7,7 +7,7 @@
     </svg>
 
     <body>
-        <h1>United States Minimum Wage</h1>
+        <h3>Federal Wage</h3>
         <p style="text-align:left;">
             <a href="index.html">Previous</a>
             <span style="float:right;">
@@ -30,6 +30,7 @@
             .range([500, 0]);
         
         d3.csv("MinimumWage.csv", function(data){
+            console.log(data.FederalMinimumWage_nominal_dollars);  
             //x axis
             svg.append("g")
                 .attr("transform", "translate(0,500)")
