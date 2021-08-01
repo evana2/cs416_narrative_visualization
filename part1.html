@@ -47,13 +47,7 @@
        .domain([0, 12])
        .range([ height, 0 ]);
 
-    //make a legend
-    legend = svg.append("g")
-      .attr("class","legend")
-      .attr("transform","translate(50,30)")
-      .style("font-size","12px")
-      .call(d3.legend)
-
+    
     //Read the data
     d3.csv("MinimumWage.csv",
    
