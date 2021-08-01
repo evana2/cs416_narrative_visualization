@@ -31,7 +31,7 @@
     
         // Add X axis --> it is a date format
         var x = d3.scaleLinear()
-          .domain([1960,2000])
+          .domain([1965,2020])
           .range([ 0, width ]);
         svg.append("g")
           .attr("transform", "translate(0," + height + ")")
@@ -62,12 +62,12 @@
      //Read the data
      d3.csv("PovertyLevelWages.csv",
    
-   // Now I can use this dataset:
-   function(data) {
+    // Now I can use this dataset:
+    function(data) {
  
      // Add X axis
      var x = d3.scaleLinear()
-       .domain([1960,2000])
+       .domain([1965,2020])
        .range([ 0, width ]);
      // Add Y axis
      var y = d3.scaleLinear()
