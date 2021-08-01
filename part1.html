@@ -54,7 +54,7 @@
         var line = d3.line()
             .x(function(d) { return x(d.Date); })
             .y(function(d) { return y(d.FederalMinimumWage_nominal_dollars); });
-        svg.append("path")
+        d3.select("svg").append("g").append("path")
           .datum(data)
           .attr("fill", "none")
           .attr("stroke", "steelblue")
@@ -62,8 +62,19 @@
           .attr("class", "line")
           .attr("d", line);
       
-        
+          d3.select("svg").append("g").append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(function(d) { return x(d.Date) })
+                .y(function(d) { return y(d.FederalMinimumWage_nominal_dollars) })
+        )
+
+
         });
+
         
         </script>
     </html>
