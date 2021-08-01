@@ -158,25 +158,8 @@
             .x(function(d) { return x(d.Date) })
             .y(function(d) { return y(d.FederalMinimum2018dollars) })
             )    
-    })
-    
-     //Read the data
-    var data_poverty = d3.csv("PovertyLevelWages.csv",
-      // Now I can use this dataset:
-      function(data) {
-        // Add the line
-        svg.append("path")
-          .datum(data)
-          .attr("fill", "none")
-          .attr("stroke", "red")
-          .attr("stroke-width", 1.5)
-          .attr("d", d3.line()
-            .x(function(d) { return x(d.Date) })
-            .y(function(d) { return y(d.HourlyPovertyLevelWage) })
-          )    
-    })
-      
-    svg.append('rect')
+
+            svg.append('rect')
       .style("fill", "none")
       .style("pointer-events", "all")
       .attr('width', width)
@@ -208,6 +191,25 @@
         focus.style("opacity", 0)
         focusText.style("opacity", 0)
       }
+    })
+    
+     //Read the data
+    var data_poverty = d3.csv("PovertyLevelWages.csv",
+      // Now I can use this dataset:
+      function(data) {
+        // Add the line
+        svg.append("path")
+          .datum(data)
+          .attr("fill", "none")
+          .attr("stroke", "red")
+          .attr("stroke-width", 1.5)
+          .attr("d", d3.line()
+            .x(function(d) { return x(d.Date) })
+            .y(function(d) { return y(d.HourlyPovertyLevelWage) })
+          )    
+    })
+      
+    
 
     </script>
 </html> 
