@@ -49,12 +49,12 @@
 
     //make a legend
     d3.select("svg").append("g") .attr("transform","translate(300,300)")
-        .append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "blue")
-        .append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "green")
-        .append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "red")
-        .append("text").attr("x", 220).attr("y", 130).text("Federal Minimum Wage").style("font-size", "15px").attr("alignment-baseline","middle")
-        .append("text").attr("x", 220).attr("y", 160).text("Wage Adjusted for Inflation").style("font-size", "15px").attr("alignment-baseline","middle")
-        .append("text").attr("x", 220).attr("y", 190).text("Hourly Wage to Meet Poverty Level").style("font-size", "15px").attr("alignment-baseline","middle")
+        .append("circle").attr("cx",0).attr("cy",30).attr("r", 6).style("fill", "blue")
+        .append("circle").attr("cx",0).attr("cy",60).attr("r", 6).style("fill", "green")
+        .append("circle").attr("cx",0).attr("cy",90).attr("r", 6).style("fill", "red")
+        .append("text").attr("x", 20).attr("y", 30).text("Federal Minimum Wage").style("font-size", "15px").attr("alignment-baseline","middle")
+        .append("text").attr("x", 20).attr("y", 60).text("Wage Adjusted for Inflation").style("font-size", "15px").attr("alignment-baseline","middle")
+        .append("text").attr("x", 20).attr("y", 90).text("Hourly Wage to Meet Poverty Level").style("font-size", "15px").attr("alignment-baseline","middle")
 
     //Read the data
     d3.csv("MinimumWage.csv",
