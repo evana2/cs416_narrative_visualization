@@ -1,0 +1,103 @@
+<!DOCTYPE hyml>
+<html>
+    <script src='https://d3js.org/d3.v5.min.js'></script>
+    <style> path {stroke: black;}</style>
+
+    <body>
+        <h3>Demographics</h3>
+        <p style="text-align:left;">
+            <a href="part2.html">Previous</a>
+            <span style="float:right;">
+                <a href="end.html">Next</a>
+            </span>
+        </p>
+
+        <p> There are currently over 140 million people in the United States who make minimum wage or less. </p>
+        
+    </body>
+
+
+    <button onclick="update(age_data)">Age</button>
+    <button onclick="loadPageV1()">Race</button>
+    <button onclick="update(time_data)">Part-Time</button>
+    <button onclick="update(gender_data)">Gender</button>
+
+    <div id="my_dataviz"></div>
+<script>
+    function loadPageV0(){
+        window.location = "https://evana2.github.io/part3V0.html";
+    }
+    function loadPageV1(){
+        window.location = "https://evana2.github.io/part3V1.html";
+    }
+    function loadPageV2(){
+        window.location = "https://evana2.github.io/part3V2.html";
+    }
+    function loadPageV3(){
+        window.location = "https://evana2.github.io/part3V3.html";
+    }
+</script>
+
+<script>
+
+    // set the dimensions and margins of the graph
+    var width = 450
+        height = 450
+        margin = 40
+
+    // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+    var radius = Math.min(width, height) / 2 - margin
+
+    // append the svg object to the div called 'my_dataviz'
+    var svg = d3.select("#my_dataviz")
+    .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+    .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    // Create dummy data
+    var data = {"White": 72.8, "Black": 17.7, "Asain":3.8, "Hispanic or Latino":18.5}
+    
+    // set the color scale
+    var color = d3.scaleOrdinal()
+    .domain(age_data)
+    .range(d3.schemeSet2);
+
+    // Compute the position of each group on the pie:
+    var pie = d3.pie()
+    .value(function(d) {return d.value; })
+    var data_ready = pie(d3.entries(age_data))
+    // Now I know that group A goes from 0 degrees to x degrees and so on.
+
+    // shape helper to build arcs:
+    var arcGenerator = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius)
+
+    // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+    svg
+    .selectAll('mySlices')
+    .data(data_ready)
+    .enter()
+    .append('path')
+        .attr('d', arcGenerator)
+        .attr('fill', function(d){ return(color(d.data.key)) })
+        .attr("stroke", "black")
+        .style("stroke-width", "2px")
+        .style("opacity", 0.7)
+
+    // Now add the annotation. Use the centroid method to get the best coordinates
+    svg
+    .selectAll('mySlices')
+    .data(data_ready)
+    .enter()
+    .append('text')
+    .text(function(d){ return "Ages " + d.data.key})
+    .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
+    .style("text-anchor", "middle")
+    .style("font-size", 17)
+
+
+</script>
+</html>
