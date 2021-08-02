@@ -89,10 +89,11 @@ var legend = d3.select("svg").append("g")
       .style("fill", "#ccd0d0")
     //var name = ["Federal Minimum Wage", "Minimum Wage Adjusted for Inflation", "Poverty Level Wage"]
 	legend.append("text")
-		.attr("y", -30)
+		.attr("y", 85)
         .attr("height",30)
         .attr("width",100)
         .text("Minimum Wage: US Dollars")
+		.style("font-size", "18px")
 	legend.append("rect")
           .attr("y", 30)
           .attr("width", 10)
@@ -136,14 +137,18 @@ var div = d3.select("body")
 
 // Load in my states data!
 d3.csv("MinimumWageState.csv", function(data) {
+	
+	
 	svg.append("text")
-		.attr("x", 25)
+		.attr("x", 750)
 		.attr("id", "currState")
-        .attr("y", 2 * 25 + 8)
+        .attr("y", 450)
         .attr("height",30)
         .attr("width",100)
         .text("Federal Minimum Wage: $7.25")
-	// Load GeoJSON data and merge with states data
+	
+	
+		// Load GeoJSON data and merge with states data
 	d3.json("us.json", function(json) {
 
 		// Loop through each state data value in the .csv file
@@ -197,7 +202,8 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 		 // Create Event Handlers for mouse
 		 function handleMouseOver(d, i) {  // Add interactivity
-			svg.select("#currState").text(d.properties.name + ": $" + d.properties.wage)
+			svg.select("#currState")
+				.text(d.properties.name + ": $" + d.properties.wage)
 			// // Specify where to put label of text
 			// svg.append("text").attr({
 			// 	id: "t" + d.properties.wage + "-" + d.properties.name ,  // Create an id for text so we can select it later for removing on mouseout
@@ -211,7 +217,10 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 		function handleMouseOut(d, i) {
 			// Select text by id and then remove
-			svg.select("#currState").text("Federal Minimum Wage: $7.25")
+			svg.select("#currState")
+				.text("Federal Minimum Wage: $7.25")
+				.attr("x", 750)
+				.attr("y", 450)
 			// d3.select("t" + d.properties.wage + "-" + d.properties.name).remove();  // Remove text location
 			 }
 	});
