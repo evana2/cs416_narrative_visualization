@@ -7,7 +7,6 @@
 /* On mouse hover, lighten state color */
 path:hover {
 	fill-opacity: .7;
-	
 }
 
 /* Style for Custom Tooltip */
@@ -96,11 +95,13 @@ var legend = d3.select("svg").append("g")
           .style("fill", "red")
     legend.append("rect")
           .attr("y", 50)
+		  .attr("x", 25)
           .attr("width", 10)
           .attr("height", 10)
           .style("fill", "grey")
     legend.append("rect")
-          .attr("y", 75)
+          .attr("y", 25)
+		  .attr("x", 50)
           .attr("width", 10)
           .attr("height", 10)
           .style("fill", "blue")
