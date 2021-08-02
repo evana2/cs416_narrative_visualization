@@ -246,7 +246,7 @@
         focusGreen
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.FederalMinimum2018dollars))
-        focusGreen
+        focusRed
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData2.HourlyPovertyLevelWage))
         focusText
@@ -258,9 +258,9 @@
           .attr("x", x(selectedData.Date)+15)
           .attr("y", y(selectedData.FederalMinimum2018dollars))
         focusTextRed
-          .html("$" + selectedData.HourlyPovertyLevelWage + " in " + selectedData.Date)
+          .html("$" + selectedData2.HourlyPovertyLevelWage + " in " + selectedData.Date)
           .attr("x", x(selectedData.Date)+15)
-          .attr("y", y(selectedData.HourlyPovertyLevelWage))
+          .attr("y", y(selectedData2.HourlyPovertyLevelWage))
         }
       function mouseout() {
         focus.style("opacity", 0)
