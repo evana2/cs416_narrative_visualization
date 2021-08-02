@@ -17,10 +17,10 @@
     </body>
 
 
-    <button onclick="update(age_data)">Age</button>
+    <button onclick="loadPageV0()">Age</button>
     <button onclick="loadPageV1()">Race</button>
-    <button onclick="update(time_data)">Part-Time</button>
-    <button onclick="update(gender_data)">Gender</button>
+    <button onclick="loadPageV2()">Part-Time</button>
+    <button onclick="loadPageV3()">Gender</button>
 
     <div id="my_dataviz"></div>
 <script>
@@ -93,7 +93,7 @@
     .data(data_ready)
     .enter()
     .append('text')
-    .text(function(d){ return "Ages " + d.data.key})
+    .text(function(d){ return d.data.key})
     .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
     .style("text-anchor", "middle")
     .style("font-size", 17)
