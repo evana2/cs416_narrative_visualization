@@ -95,7 +95,9 @@
             .exit()
             .remove()
 
-          svg.data(data_ready)
+          svg.selectAll("text")
+            .data(data_ready)
+            .enter()
             .append('text')
             .text(function(d){ return "grp " + d.data.key})
             .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
