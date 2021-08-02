@@ -103,10 +103,10 @@
           .text("Poverty Wage")
     
     //Read the data
-    var data_wages = d3.csv("MinimumWage.csv",
-   
-      // Now I can use this dataset:
-      function(data) {
+    Promise.all([
+          d3.csv("MinimumWage.csv"),
+          d3.csv("file2.csv"),
+      ]).then(function(data) {
     
         // Add X axis --> it is a date format
         svg.append("g")
@@ -186,8 +186,6 @@
       .on('mouseover', mouseover)
       .on('mousemove', mousemove)
       .on('mouseout', mouseout);
-
-      var data_wages = d3.csv("MinimumWage.csv")
 
       // What happens when the mouse move -> show the annotations at the right positions.
       function mouseover() {
