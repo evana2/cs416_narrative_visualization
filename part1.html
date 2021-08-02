@@ -135,9 +135,28 @@
             .attr("stroke", "black")
             .attr('r', 8.5)
             .style("opacity", 0)
+        var focusRed = svg
+          .append('g')
+          .append('circle')
+            .style("fill", "none")
+            .attr("stroke", "black")
+            .attr('r', 8.5)
+            .style("opacity", 0)
 
         // Create the text that travels along the curve of chart
         var focusText = svg
+          .append('g')
+          .append('text')
+            .style("opacity", 0)
+            .attr("text-anchor", "left")
+            .attr("alignment-baseline", "middle")
+        var focusTextGreen = svg
+          .append('g')
+          .append('text')
+            .style("opacity", 0)
+            .attr("text-anchor", "left")
+            .attr("alignment-baseline", "middle")
+        var focusTextRed = svg
           .append('g')
           .append('text')
             .style("opacity", 0)
@@ -196,7 +215,10 @@
       function mouseover() {
           focus.style("opacity", 1)
           focusGreen.style("opacity", 1)
+          focusRed.style("opacity", 1)
           focusText.style("opacity",1)
+          focusTextGreen.style("opacity",1)
+          focusTextRed.style("opacity",1)
         }
 
       function mousemove() {
@@ -223,6 +245,10 @@
           .html("$" + selectedData.FederalMinimumWage_nominal_dollars + " in " + selectedData.Date)
           .attr("x", x(selectedData.Date)+15)
           .attr("y", y(selectedData.FederalMinimumWage_nominal_dollars))
+        focusTextGreen
+          .html("$" + selectedData.FederalMinimum2018dollars + " in " + selectedData.Date)
+          .attr("x", x(selectedData.Date)+15)
+          .attr("y", y(selectedData.FederalMinimum2018dollars))
         }
       function mouseout() {
         focus.style("opacity", 0)
