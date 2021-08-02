@@ -18,6 +18,7 @@
     <button onclick="update(age_data)">Age</button>
     <button onclick="update(race_data)">Race</button>
     <button onclick="update(time_data)">Part-Time</button>
+    <button onclick="update(gender_data)">Gender</button>
 
     <script>
 
@@ -45,7 +46,10 @@
         var race_data = {a: 72.8, b: 17.7, c:3.8, d:18.5}
 
         var time_options = ["part-time", "full-time"] 
-        var time_data = {a: 60, b:40}
+        var time_data = {a: 57.4, b:42.1}
+
+        var gender_options = ["Male", "Female"]
+        var gender_data = {a: 33, b:66.5}
         
         // set the color scale
         var color = d3.scaleOrdinal()
