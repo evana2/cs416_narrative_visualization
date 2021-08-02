@@ -205,8 +205,6 @@ d3.csv("MinimumWageState.csv", function(data) {
 			var path_element = svg.select("#" + d.properties.name)
 			console.log(d.properties.name, path_element)
 			
-
-
 //			var bbox = path_element.getBBox();
 			var center_x = path.centroid(d)[0]
 			var center_y = path.centroid(d)[1]
