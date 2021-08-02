@@ -192,7 +192,7 @@
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
         focusText
-          .html("x:" + selectedData.Date + "  -  " + "y:" + selectedData.FederalMinimumWage_nominal_dollars)
+          .html("$" + selectedData.FederalMinimumWage_nominal_dollars + " in " + "x:" + selectedData.Date)
           .attr("x", x(selectedData.Date)+15)
           .attr("y", y(selectedData.FederalMinimumWage_nominal_dollars))
         }
