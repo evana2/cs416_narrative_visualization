@@ -137,18 +137,7 @@ var div = d3.select("body")
 
 // Load in my states data!
 d3.csv("MinimumWageState.csv", function(data) {
-	
-	
-	svg.append("text")
-		.attr("x", 750)
-		.attr("id", "currState")
-        .attr("y", 350)
-        .attr("height",30)
-        .attr("width",100)
-		.style("text-anchor", "middle")
-        .text("Federal Minimum Wage: $7.25")
-	
-	
+		
 		// Load GeoJSON data and merge with states data
 	d3.json("us.json", function(json) {
 
@@ -207,7 +196,6 @@ d3.csv("MinimumWageState.csv", function(data) {
 			var center_x = path.centroid(d)[0]
 			var center_y = path.centroid(d)[1]
 
-			svg.select("#currState").raise()
 			svg.select("#currState")
 				.text(d.properties.name + ": $" + d.properties.wage)
 				.attr("x", center_x)
@@ -219,12 +207,21 @@ d3.csv("MinimumWageState.csv", function(data) {
 			// Select text by id and then remove
 			svg.select("#currState")
 				.text("Federal Minimum Wage: $7.25")
-				.attr("x", 750)
+				.attr("x", 850)
 				.attr("y", 350)
 			}
 	});
 
 });
+
+svg.append("text")
+		.attr("x", 850)
+		.attr("id", "currState")
+        .attr("y", 350)
+        .attr("height",30)
+        .attr("width",100)
+		.style("text-anchor", "middle")
+        .text("Federal Minimum Wage: $7.25")
 
 
 </script>
