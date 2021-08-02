@@ -162,7 +162,12 @@
             .style("opacity", 0)
             .attr("text-anchor", "left")
             .attr("alignment-baseline", "middle")
-
+        var focusTextYear = svg
+          .append('g')
+          .append('text')
+            .style("opacity", 0)
+            .attr("text-anchor", "left")
+            .attr("alignment-baseline", "middle")
 
         // Add the line
         svg.append("path")
@@ -219,6 +224,7 @@
           focusText.style("opacity",1)
           focusTextGreen.style("opacity",1)
           focusTextRed.style("opacity",1)
+          focusTextYear.style("opacity",1)
         }
 
       function mousemove() {
