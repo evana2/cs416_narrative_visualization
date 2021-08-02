@@ -129,8 +129,8 @@
             svg.append("text")
               .attr("class", "x label")
               .attr("text-anchor", "end")
-              .attr("x", width)
-              .attr("y", height - 6)
+              .attr("x", 440)
+              .attr("y", 350)
               .text("Year");
             // Add Y axis
             var y = d3.scaleLinear()
@@ -149,7 +149,7 @@
               .attr("class", "legend")
               .attr("height", 100)
               .attr("width", 100)
-              .attr("transform","translate(300,225)");
+              .attr("transform","translate(300,180)");
             legend.append("rect")
               .attr("x",-5)
               .attr("y",20)
