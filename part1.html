@@ -175,7 +175,7 @@
                       .y(function(d) { return y(d.HourlyPovertyLevelWage) })
                     )  
                     
-                    
+            //THIS IS THE FOCUS
                     svg.append('rect')
       .style("fill", "none")
       .style("pointer-events", "all")
@@ -197,11 +197,11 @@
         console.log(x0)
         var xprime = Math.round(x0)
         console.log(xprime)
-        var selectedData = data_wages[0]
-        console.log(data_wages, data_wages[0])
-        for (var i = 0; i < data_wages.length; i++) {
-	        if (data_wages[i].Date == xprime){ 
-            selectedData = data_wages[i]
+        var selectedData = data[0]
+        console.log(data, data[0])
+        for (var i = 0; i < data.length; i++) {
+	        if (data[i].Date == xprime){ 
+            selectedData = data[i]
           }
         }
         console.log(selectedData)
