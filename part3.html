@@ -10,14 +10,14 @@
             <a href="part2.html">Previous</a>
         </p>
 
-        <p> pie charts for 1) age 2) </p>
+        <p> There are currently over 140 million people in the United States who make minimum wage or less. </p>
         
     </body>
 
 
-    <button onclick="update(data1)">Age</button>
-    <button onclick="update(data2)">Gender</button>
-    <button onclick="update(data1)">Data 1</button>
+    <button onclick="update(age_data)">Age</button>
+    <button onclick="update(race_data)">Race</button>
+    <button onclick="update(time_data)">Part-Time</button>
     <button onclick="update(data2)">Data 2</button>
 
     <script>
@@ -40,11 +40,13 @@
         
         // create 2 data_set
         var age_options = ["16-24", "25-34", "35-44", "45-54", "55-64", "65+"]
-        var age = {a: 47.6, b: 22.5, c:11.7, d:8.4, e:6.7, f:3.2}
+        var age_data = {a: 47.6, b: 22.5, c:11.7, d:8.4, e:6.7, f:3.2}
 
         var race_options = ["White", "Black or African American", "Asain", "Hispanic or Latino"]
-        var data2 = {a: 6, b: 16, c:20, d:14, e:19, f:12}
-        var data
+        var race_data = {a: 72.8, b: 17.7, c:3.8, d:18.5}
+
+        var time_options = ["part-time", "full-time"] 
+        var time_data = {a: , b:}
         
         // set the color scale
         var color = d3.scaleOrdinal()

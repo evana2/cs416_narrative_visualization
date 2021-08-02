@@ -186,14 +186,13 @@
           }
         }
 
-        console.log(closest_point)
+        
         selectedData = closest_point
-        console.log(selectedData)
         focus
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
         focusText
-          .html("x:" + selectedData.Date + "  -  " + "y:" + selectedData.y)
+          .html("x:" + selectedData.Date + "  -  " + "y:" + selectedData.FederalMinimumWage_nominal_dollars)
           .attr("x", x(selectedData.Date)+15)
           .attr("y", y(selectedData.FederalMinimumWage_nominal_dollars))
         }
