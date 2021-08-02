@@ -247,9 +247,9 @@
         
         console.log(selectedData)
         focusTextYear
-          .html("$" + selectedData.Date)
-          .attr("x", "150")
-          .attr("y", "200")
+          .html(selectedData.Date)
+          .attr("x", 250)
+          .attr("y", 50)
         focus
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
