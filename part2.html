@@ -169,25 +169,30 @@ d3.csv("MinimumWageState.csv", function(data) {
 			.data(json.features)
 			.enter()
 			.append("path")
-			.attr("d", path)
-			.attr("id", function(d){ return d.properties.name})
-			.style("stroke", "#fff")
-			.style("stroke-width", "1")
-			.on("mouseover", handleMouseOver)
-			.on("mouseout", handleMouseOut)
-			.style("fill", function(d) {
+				.attr("d", path)
+				.attr("id", function(d){ return d.properties.name})
+				.style("stroke", "#fff")
+				.style("stroke-width", "1")
+				.on("mouseover", handleMouseOver)
+				.on("mouseout", handleMouseOut)
+				.style("fill", function(d) {
 
-				// Get data value
-				var value = d.properties.wage;
+					// Get data value
+					var value = d.properties.wage;
 
-				if (value) {
-					//If value exists…
-					return mycolor(value);
-				} else {
-					//If value is undefined…
-					return "rgb(213,222,217)";
-				}
-			});
+					if (value) {
+						//If value exists…
+						return mycolor(value);
+					} else {
+						//If value is undefined…
+						return "rgb(213,222,217)";
+					}
+				})
+			.append("text")
+				.attr("x", path.centroid(d)[0])
+				.attr("y", path.centroid(d)[1])
+				.style("text-anchor", "middle")
+				.text(d.properties.name + ": $" + d.properties.wage)
 
 
 		 // Create Event Handlers for mouse
