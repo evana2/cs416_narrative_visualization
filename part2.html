@@ -93,7 +93,7 @@ var legend = d3.select("svg").append("g")
         .attr("height",30)
         .attr("width",100)
         .text("Minimum Wage: US Dollars")
-		.style("font-size", "18px")
+		.style("font-size", "12px")
 	legend.append("rect")
           .attr("y", 30)
           .attr("width", 10)
@@ -202,8 +202,15 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 		 // Create Event Handlers for mouse
 		 function handleMouseOver(d, i) {  // Add interactivity
+			var path_element = svg.selectAll("path").select("#" + d.properties.name)
+			var bbox = path_element.getBBox();
+			var center_x = bbox.left + bbox.width/2
+			var center_y = bbox.top + bbox.height/2
+
 			svg.select("#currState")
 				.text(d.properties.name + ": $" + d.properties.wage)
+				.attr("x", center_x)
+				.attr("y", center_y)
 			// // Specify where to put label of text
 			// svg.append("text").attr({
 			// 	id: "t" + d.properties.wage + "-" + d.properties.name ,  // Create an id for text so we can select it later for removing on mouseout
@@ -214,6 +221,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 			// return [d.x, d.y];  // Value of the text
 			// });
 			 }
+
 
 		function handleMouseOut(d, i) {
 			// Select text by id and then remove
