@@ -103,10 +103,10 @@
           .text("Poverty Wage")
     
     //Read the data
-    Promise.all([
-          d3.csv("MinimumWage.csv"),
-          d3.csv("PovertyLevelWages.csv"),
-      ]).then(function(data) {
+    var data_wages = d3.csv("MinimumWage.csv",
+   
+      // Now I can use this dataset:
+      function(data) {
     
         // Add X axis --> it is a date format
         svg.append("g")
@@ -116,11 +116,10 @@
         // Add Y axis
         svg.append("g")
           .call(d3.axisLeft(y));
-
-        console.log(data[0])
+        
         // Add the line
         svg.append("path")
-          .datum(data[0])
+          .datum(data)
           .attr("fill", "none")
           .attr("stroke", "steelblue")
           .attr("stroke-width", 1.5)
@@ -131,7 +130,7 @@
        
         // Add the line
         svg.append("path")
-          .datum(data[0])
+          .datum(data)
           .attr("fill", "none")
           .attr("stroke", "green")
           .attr("stroke-width", 1.5)
@@ -140,86 +139,86 @@
             .y(function(d) { return y(d.FederalMinimum2018dollars) })
             )    
 
-            
+             //Read the data
+              var data_poverty = d3.csv("PovertyLevelWages.csv",
+                // Now I can use this dataset:
+                function(dataset_2) {
+                  // Add the line
+                  svg.append("path")
+                    .datum(dataset_2)
+                    .attr("fill", "none")
+                    .attr("stroke", "red")
+                    .attr("stroke-width", 1.5)
+                    .attr("d", d3.line()
+                      .x(function(d) { return x(d.Date) })
+                      .y(function(d) { return y(d.HourlyPovertyLevelWage) })
+                    )    
+              })
     })
     
-     //Read the data
-    var data_poverty = d3.csv("PovertyLevelWages.csv",
-      // Now I can use this dataset:
-      function(data) {
-        // Add the line
-        svg.append("path")
-          .datum(data)
-          .attr("fill", "none")
-          .attr("stroke", "red")
-          .attr("stroke-width", 1.5)
-          .attr("d", d3.line()
-            .x(function(d) { return x(d.Date) })
-            .y(function(d) { return y(d.HourlyPovertyLevelWage) })
-          )    
-    })
+    
       
-    //  // This allows to find the closest X index of the mouse:
-    //  var bisect = d3.bisector(function(d) { return d.x; }).left;
+     // This allows to find the closest X index of the mouse:
+     var bisect = d3.bisector(function(d) { return d.x; }).left;
 
-    //   // Create the circle that travels along the curve of chart
-    //   var focus = svg
-    //     .append('g')
-    //     .append('circle')
-    //       .style("fill", "none")
-    //       .attr("stroke", "black")
-    //       .attr('r', 8.5)
-    //       .style("opacity", 0)
+      // Create the circle that travels along the curve of chart
+      var focus = svg
+        .append('g')
+        .append('circle')
+          .style("fill", "none")
+          .attr("stroke", "black")
+          .attr('r', 8.5)
+          .style("opacity", 0)
 
-    //   // Create the text that travels along the curve of chart
-    //   var focusText = svg
-    //     .append('g')
-    //     .append('text')
-    //       .style("opacity", 0)
-    //       .attr("text-anchor", "left")
-    //       .attr("alignment-baseline", "middle")
+      // Create the text that travels along the curve of chart
+      var focusText = svg
+        .append('g')
+        .append('text')
+          .style("opacity", 0)
+          .attr("text-anchor", "left")
+          .attr("alignment-baseline", "middle")
 
-    // svg.append('rect')
-    //   .style("fill", "none")
-    //   .style("pointer-events", "all")
-    //   .attr('width', width)
-    //   .attr('height', height)
-    //   .on('mouseover', mouseover)
-    //   .on('mousemove', mousemove)
-    //   .on('mouseout', mouseout);
+    svg.append('rect')
+      .style("fill", "none")
+      .style("pointer-events", "all")
+      .attr('width', width)
+      .attr('height', height)
+      .on('mouseover', mouseover)
+      .on('mousemove', mousemove)
+      .on('mouseout', mouseout);
 
-    //   // What happens when the mouse move -> show the annotations at the right positions.
-    //   function mouseover() {
-    //       focus.style("opacity", 1)
-    //       focusText.style("opacity",1)
-    //     }
+      // What happens when the mouse move -> show the annotations at the right positions.
+      function mouseover() {
+          focus.style("opacity", 1)
+          focusText.style("opacity",1)
+        }
 
-    //   function mousemove() {
-    //     // recover coordinate we need
-    //     var x0 = x.invert(d3.mouse(this)[0]);
-    //     console.log(x0)
-    //     var xprime = Math.round(x0)
-    //     console.log(xprime)
-    //     var selectedData = data_wages[0]
-    //     console.log(data_wages, data_wages[0])
-    //     for (var i = 0; i < data_wages.length; i++) {
-	  //       if (data_wages[i].Date == xprime){ 
-    //         selectedData = data_wages[i]
-    //       }
-    //     }
-    //     console.log(selectedData)
-    //     focus
-    //       .attr("cx", x(selectedData.Date))
-    //       .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
-    //     focusText
-    //       .html("$" + selectedData.FederalMinimumWage_nominal_dollars + " in " + selectedData.Date)
-    //       .attr("x", x(selectedData.Date)+15)
-    //       .attr("y", y(selectedData.FederalMinimumWage_nominal_dollars))
-    //     }
-    //   function mouseout() {
-    //     focus.style("opacity", 0)
-    //     focusText.style("opacity", 0)
-    //   }
+      function mousemove() {
+        // recover coordinate we need
+        var x0 = x.invert(d3.mouse(this)[0]);
+        console.log(x0)
+        var xprime = Math.round(x0)
+        console.log(xprime)
+        var selectedData = data_wages[0]
+        console.log(data_wages, data_wages[0])
+        for (var i = 0; i < data_wages.length; i++) {
+	        if (data_wages[i].Date == xprime){ 
+            selectedData = data_wages[i]
+          }
+        }
+        console.log(selectedData)
+        focus
+          .attr("cx", x(selectedData.Date))
+          .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
+        focusText
+          .html("$" + selectedData.FederalMinimumWage_nominal_dollars + " in " + selectedData.Date)
+          .attr("x", x(selectedData.Date)+15)
+          .attr("y", y(selectedData.FederalMinimumWage_nominal_dollars))
+        }
+      function mouseout() {
+        focus.style("opacity", 0)
+        focusText.style("opacity", 0)
+      }
 
     </script>
 </html> 
