@@ -198,7 +198,7 @@
         var x0 = x.invert(d3.mouse(this)[0]);
         var xprime = Math.round(x0)
         var selectedData = data_wages[0]
-        for (var i = 0; i < data.length; i++) {
+        for (var i = 0; i < data_wages.length; i++) {
 	        if (data_wages[i].Date == xprime){ 
             selectedData = data_wages[i]
           }
