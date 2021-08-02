@@ -24,7 +24,7 @@
 
         // set the dimensions and margins of the graph
         // set the dimensions and margins of the graph
-        var margin = {top: 500, right: 50, bottom: 70, left: 60},
+        var margin = {top: 100, right: 50, bottom: 70, left: 60},
                 width = 550 - margin.left - margin.right,
                 height = 470 - margin.top - margin.bottom;
         
@@ -33,11 +33,12 @@
         
         // append the svg object to the div called 'my_dataviz'
         var svg = d3.select("#my_dataviz")
-          .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-          .append("g")
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+        .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform",
+                      "translate(" + margin.left + "," + margin.top + ")");
         
         // create 2 data_set
         var age_options = ["16-24", "25-34", "35-44", "45-54", "55-64", "65+"]
