@@ -180,7 +180,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 			.enter()
 			.append("path")
 			.attr("d", path)
-			.attr("id", function(d,i){ return d.properties.name})
+			.attr("id", function(d){ return d.properties.name})
 			.style("stroke", "#fff")
 			.style("stroke-width", "1")
 			.on("mouseover", handleMouseOver)
@@ -203,11 +203,11 @@ d3.csv("MinimumWageState.csv", function(data) {
 		 // Create Event Handlers for mouse
 		 function handleMouseOver(d, i) {  // Add interactivity
 			var path_element = svg.selectAll("path").select("#" + d.properties.name)
-			console.log(path_element)
-			
-			var bbox = path_element.getBBox();
-			var center_x = bbox.left + bbox.width/2
-			var center_y = bbox.top + bbox.height/2
+			console.log(d.properties.name, path_element)
+
+//			var bbox = path_element.getBBox();
+			var center_x = path.centroid(path_element)[0]
+			var center_y = path.centroid(path_element)[0]
 
 			svg.select("#currState")
 				.text(d.properties.name + ": $" + d.properties.wage)
