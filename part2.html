@@ -207,7 +207,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 //			var bbox = path_element.getBBox();
 			var center_x = path.centroid(path_element)[0]
-			var center_y = path.centroid(path_element)[0]
+			var center_y = path.centroid(path_element)[1]
 
 			svg.select("#currState")
 				.text(d.properties.name + ": $" + d.properties.wage)
