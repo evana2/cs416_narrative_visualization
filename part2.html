@@ -202,7 +202,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 		 // Create Event Handlers for mouse
 		 function handleMouseOver(d, i) {  // Add interactivity
-			var path_element = svg.selectAll("path").select("#" + d.properties.name)
+			var path_element = svg.select("#" + d.properties.name)
 			console.log(d.properties.name, path_element)
 
 //			var bbox = path_element.getBBox();
