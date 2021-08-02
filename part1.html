@@ -128,6 +128,13 @@
             .attr("stroke", "black")
             .attr('r', 8.5)
             .style("opacity", 0)
+        var focus = svg
+          .append('g')
+          .append('circle')
+            .style("fill", "none")
+            .attr("stroke", "black")
+            .attr('r', 8.5)
+            .style("opacity", 0)
 
         // Create the text that travels along the curve of chart
         var focusText = svg
@@ -188,6 +195,7 @@
       // What happens when the mouse move -> show the annotations at the right positions.
       function mouseover() {
           focus.style("opacity", 1)
+          focusGreen.style("opacity", 1)
           focusText.style("opacity",1)
         }
 
@@ -208,6 +216,9 @@
         focus
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
+        focusGreen
+          .attr("cx", x(selectedData.Date))
+          .attr("cy", y(selectedData.FederalMinimum2018dollars))
         focusText
           .html("$" + selectedData.FederalMinimumWage_nominal_dollars + " in " + selectedData.Date)
           .attr("x", x(selectedData.Date)+15)
