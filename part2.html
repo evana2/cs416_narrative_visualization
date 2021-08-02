@@ -142,7 +142,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 	svg.append("text")
 		.attr("x", 750)
 		.attr("id", "currState")
-        .attr("y", 450)
+        .attr("y", 350)
         .attr("height",30)
         .attr("width",100)
         .text("Federal Minimum Wage: $7.25")
@@ -220,7 +220,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 			svg.select("#currState")
 				.text("Federal Minimum Wage: $7.25")
 				.attr("x", 750)
-				.attr("y", 450)
+				.attr("y", 350)
 			// d3.select("t" + d.properties.wage + "-" + d.properties.name).remove();  // Remove text location
 			 }
 	});
