@@ -211,6 +211,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 			svg.select("#currState")
 				.text(d.properties.name + ": $" + d.properties.wage)
+				.raise()
 				.attr("x", center_x)
 				.attr("y", center_y)
 			// // Specify where to put label of text
