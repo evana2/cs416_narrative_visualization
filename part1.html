@@ -105,7 +105,7 @@
     //Read the data
     Promise.all([
           d3.csv("MinimumWage.csv"),
-          d3.csv("file2.csv"),
+          d3.csv("PovertyLevelWages.csv"),
       ]).then(function(data) {
     
         // Add X axis --> it is a date format
@@ -131,7 +131,7 @@
        
         // Add the line
         svg.append("path")
-          .datum(data[1])
+          .datum(data[0])
           .attr("fill", "none")
           .attr("stroke", "green")
           .attr("stroke-width", 1.5)
