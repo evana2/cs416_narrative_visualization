@@ -18,11 +18,25 @@
 
 
     <button onclick="update(age_data)">Age</button>
-    <button onclick="update(race_data)">Race</button>
+    <button onclick="loadPageV1()">Race</button>
     <button onclick="update(time_data)">Part-Time</button>
     <button onclick="update(gender_data)">Gender</button>
 
     <div id="my_dataviz"></div>
+<script>
+    function loadPageV0(){
+        window.location = "https://evana2.github.io/part3V0.html";
+    }
+    function loadPageV1(){
+        window.location = "https://evana2.github.io/part3V1.html";
+    }
+    function loadPageV2(){
+        window.location = "https://evana2.github.io/part3V2.html";
+    }
+    function loadPageV3(){
+        window.location = "https://evana2.github.io/part3V3.html";
+    }
+</script>
 
 <script>
 
@@ -43,8 +57,7 @@
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     // Create dummy data
-    var age_options = ["16-24", "25-34", "35-44", "45-54", "55-64", "65+"]
-    var age_data = {"16-24": 47.6, b: 22.5, c:11.7, d:8.4, e:6.7, f:3.2}
+    var age_data = {"16-24": 47.6, "25-34": 22.5, "35-44":11.7, "45-54":8.4, "55-64":6.7, "65+":3.2}
 
     // set the color scale
     var color = d3.scaleOrdinal()
@@ -80,7 +93,7 @@
     .data(data_ready)
     .enter()
     .append('text')
-    .text(function(d){ return "grp " + d.data.key})
+    .text(function(d){ return "Ages " + d.data.key})
     .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
     .style("text-anchor", "middle")
     .style("font-size", 17)
