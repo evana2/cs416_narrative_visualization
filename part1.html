@@ -240,6 +240,10 @@
         }
         
         console.log(selectedData)
+        focusTextYear
+          .html("$" + selectedData.Date)
+          .attr("x", "150")
+          .attr("y", "200")
         focus
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
@@ -247,19 +251,19 @@
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.FederalMinimum2018dollars))
         focusRed
-          .attr("cx", x(selectedData.Date))
+          .attr("cx", x(selectedData2.Date))
           .attr("cy", y(selectedData2.HourlyPovertyLevelWage))
         focusText
-          .html("$" + selectedData.FederalMinimumWage_nominal_dollars + " in " + selectedData.Date)
+          .html("$" + selectedData.FederalMinimumWage_nominal_dollars)
           .attr("x", x(selectedData.Date)+15)
           .attr("y", y(selectedData.FederalMinimumWage_nominal_dollars))
         focusTextGreen
-          .html("$" + selectedData.FederalMinimum2018dollars + " in " + selectedData.Date)
+          .html("$" + selectedData.FederalMinimum2018dollars)
           .attr("x", x(selectedData.Date)+15)
           .attr("y", y(selectedData.FederalMinimum2018dollars))
         focusTextRed
-          .html("$" + selectedData2.HourlyPovertyLevelWage + " in " + selectedData.Date)
-          .attr("x", x(selectedData.Date)+15)
+          .html("$" + selectedData2.HourlyPovertyLevelWage)
+          .attr("x", x(selectedData2.Date)+15)
           .attr("y", y(selectedData2.HourlyPovertyLevelWage))
         }
       function mouseout() {
