@@ -189,14 +189,14 @@ d3.csv("MinimumWageState.csv", function(data) {
 					}
 				})
 
-		svg.append("g")
-			.data(json.features)
-			.enter()
-			.append("text")
-				.attr("x", function(d){ return path.centroid(d)[0]})
-				.attr("y", function(d){ return path.centroid(d)[1]})
-				.style("text-anchor", "middle")
-				.text(function(d){return d.properties.name + ": $" + d.properties.wage})
+		// svg.append("g")
+		// 	.data(json.features)
+		// 	.enter()
+		// 	.append("text")
+		// 		.attr("x", function(d){ return path.centroid(d)[0]})
+		// 		.attr("y", function(d){ return path.centroid(d)[1]})
+		// 		.style("text-anchor", "middle")
+		// 		.text(function(d){return d.properties.name + ": $" + d.properties.wage})
 
 
 		 // Create Event Handlers for mouse
@@ -204,7 +204,14 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 			var center_x = path.centroid(d)[0]
 			var center_y = path.centroid(d)[1]
-
+			svg.append("text")
+				.attr("x", 850)
+				.attr("id", "currState")
+				.attr("y", 350)
+				.attr("height",30)
+				.attr("width",100)
+				.style("text-anchor", "middle")
+				.text("Federal Minimum Wage: $7.25")
 			svg.select("#currState")
 				.text(d.properties.name + ": $" + d.properties.wage)
 				.attr("x", center_x)
