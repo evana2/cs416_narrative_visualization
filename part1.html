@@ -21,14 +21,14 @@
         <span style="float:right;">
             <a href="part2.html">Next</a>
         </span>
-    </p>
+      </p>
 
     <p>
         As of July 2009, the federal minimum wage is $7.25 an hour. When originally introduced the minimum wage was close to the poverty wage, but over time has has fallen more short as it is not increased to keep up with inflation.
     </p>
 </body>
 
-
+<select id="selectButton"></select>
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 <script>
@@ -249,7 +249,7 @@
         console.log(selectedData)
         focusTextYear
           .html("Year: " + selectedData.Date)
-          .attr("x", x(selectedData2.Date))
+          .attr("x", x(selectedData2.Date) - 10)
           .attr("y", 0)
         focus
           .attr("cx", x(selectedData.Date))
