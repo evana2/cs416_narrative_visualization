@@ -177,17 +177,13 @@
       function mousemove() {
         // recover coordinate we need
         var x0 = x.invert(d3.mouse(this)[0]);
-        console.log(x0)
         var xprime = Math.round(x0)
-        var closest_point = data[0]
+        var selectedData = data[0]
         for (var i = 0; i < data.length; i++) {
 	        if (data[i].Date == xprime){ 
-            closest_point = data[i]
+            selectedData = data[i]
           }
         }
-
-        
-        selectedData = closest_point
         focus
           .attr("cx", x(selectedData.Date))
           .attr("cy", y(selectedData.FederalMinimumWage_nominal_dollars))
