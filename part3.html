@@ -33,12 +33,11 @@
         
         // append the svg object to the div called 'my_dataviz'
         var svg = d3.select("#my_dataviz")
-        .append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-              .append("g")
-                .attr("transform",
-                      "translate(" + margin.left + "," + margin.top + ")");
+            .append("svg")
+                .attr("width", 550)
+                .attr("height", 470)
+            .append("g")
+                .attr("transform","translate(" + margin.left + "," + margin.top + ")");
         
         // create 2 data_set
         var age_options = ["16-24", "25-34", "35-44", "45-54", "55-64", "65+"]
