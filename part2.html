@@ -188,7 +188,8 @@ d3.csv("MinimumWageState.csv", function(data) {
 						return "rgb(213,222,217)";
 					}
 				})
-		svg.selectAll("path")
+
+		svg.append("g")
 			.data(json.features)
 			.enter()
 			.append("text")
