@@ -303,9 +303,6 @@
                 focusGreen
                   .attr("cx", x(selectedData.Date))
                   .attr("cy", y(selectedData.FederalMinimum2018dollars))
-                focusRed
-                  .attr("cx", x(selectedData2.Date))
-                  .attr("cy", y(selectedData2.HourlyPovertyLevelWage))
                 focusText
                   .html("$" + selectedData.FederalMinimumWage_nominal_dollars)
                   .attr("x", x(selectedData.Date)+15)
@@ -314,6 +311,9 @@
                   .html("$" + selectedData.FederalMinimum2018dollars)
                   .attr("x", x(selectedData.Date)+15)
                   .attr("y", y(selectedData.FederalMinimum2018dollars))
+                focusRed
+                  .attr("cx", x(selectedData2.Date))
+                  .attr("cy", y(selectedData2.HourlyPovertyLevelWage))
                 focusTextRed
                   .html("$" + selectedData2.HourlyPovertyLevelWage)
                   .attr("x", x(selectedData2.Date)+15)
