@@ -17,10 +17,10 @@
         cursor: pointer;
       }
       
-      /* Dropdown button on hover & focus */
+      /* Dropdown button on hover & focus
       .dropbtn:hover, .dropbtn:focus {
         background-color: #2980B9;
-      }
+      } */
       
       /* The container <div> - needed to position the dropdown content */
       .dropdown {
@@ -338,7 +338,7 @@
                 console.log(selectedData)
                 focusTextYear
                   .html("Year: " + selectedData.Date)
-                  .attr("x", x(selectedData2.Date) - 10)
+                  .attr("x", x(selectedData.Date) - 10)
                   .attr("y", 0)
                 focus
                   .attr("cx", x(selectedData.Date))
