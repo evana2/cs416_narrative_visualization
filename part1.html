@@ -186,8 +186,10 @@
       .on('mouseover', mouseover)
       .on('mousemove', mousemove)
       .on('mouseout', mouseout);
-    
-     // What happens when the mouse move -> show the annotations at the right positions.
+
+      var data_wages = d3.csv("MinimumWage.csv")
+
+      // What happens when the mouse move -> show the annotations at the right positions.
       function mouseover() {
           focus.style("opacity", 1)
           focusText.style("opacity",1)
