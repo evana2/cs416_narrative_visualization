@@ -131,7 +131,13 @@ var div = d3.select("body")
 
 // Load in my states data!
 d3.csv("MinimumWageState.csv", function(data) {
-
+	svg.append("text")
+		.attr("x", 25)
+		.attr("id", "currState")
+        .attr("y", 2 * 25 + 8)
+        .attr("height",30)
+        .attr("width",100)
+        .text("Federal Minimum Wage: $7.25")
 	// Load GeoJSON data and merge with states data
 	d3.json("us.json", function(json) {
 
@@ -186,22 +192,23 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 		 // Create Event Handlers for mouse
 		 function handleMouseOver(d, i) {  // Add interactivity
-
-			// Specify where to put label of text
-			svg.append("text").attr({
-				id: "t" + d.properties.wage + "-" + d.properties.name ,  // Create an id for text so we can select it later for removing on mouseout
-					x: function() { return 0; },
-					y: function() { return 0; }
-				})
-			.text(function() {
-			return [d.x, d.y];  // Value of the text
-			});
-			}
+			svg.select("text").text(d.properties.name + ": $" + d.properties.wage)
+			// // Specify where to put label of text
+			// svg.append("text").attr({
+			// 	id: "t" + d.properties.wage + "-" + d.properties.name ,  // Create an id for text so we can select it later for removing on mouseout
+			// 		x: function() { return 0; },
+			// 		y: function() { return 0; }
+			// 	})
+			// .text(function() {
+			// return [d.x, d.y];  // Value of the text
+			// });
+			// }
 
 		function handleMouseOut(d, i) {
 			// Select text by id and then remove
-			d3.select("t" + d.properties.wage + "-" + d.properties.name).remove();  // Remove text location
-			}
+			svg.select("text").text("Federal Minimum Wage: $7.25")
+			// d3.select("t" + d.properties.wage + "-" + d.properties.name).remove();  // Remove text location
+			 }
 	});
 
 });
