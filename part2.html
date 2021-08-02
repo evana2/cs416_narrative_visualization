@@ -145,6 +145,7 @@ d3.csv("MinimumWageState.csv", function(data) {
         .attr("y", 350)
         .attr("height",30)
         .attr("width",100)
+		.style("text-anchor", "middle")
         .text("Federal Minimum Wage: $7.25")
 	
 	
@@ -202,10 +203,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 
 		 // Create Event Handlers for mouse
 		 function handleMouseOver(d, i) {  // Add interactivity
-			var path_element = svg.select("#" + d.properties.name)
-			console.log(d.properties.name, path_element)
-			
-//			var bbox = path_element.getBBox();
+
 			var center_x = path.centroid(d)[0]
 			var center_y = path.centroid(d)[1]
 
@@ -214,15 +212,6 @@ d3.csv("MinimumWageState.csv", function(data) {
 				.raise()
 				.attr("x", center_x)
 				.attr("y", center_y)
-			// // Specify where to put label of text
-			// svg.append("text").attr({
-			// 	id: "t" + d.properties.wage + "-" + d.properties.name ,  // Create an id for text so we can select it later for removing on mouseout
-			// 		x: function() { return 0; },
-			// 		y: function() { return 0; }
-			// 	})
-			// .text(function() {
-			// return [d.x, d.y];  // Value of the text
-			// });
 			 }
 
 
@@ -232,8 +221,7 @@ d3.csv("MinimumWageState.csv", function(data) {
 				.text("Federal Minimum Wage: $7.25")
 				.attr("x", 750)
 				.attr("y", 350)
-			// d3.select("t" + d.properties.wage + "-" + d.properties.name).remove();  // Remove text location
-			 }
+			}
 	});
 
 });
