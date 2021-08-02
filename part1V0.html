@@ -8,49 +8,6 @@
 	            box-shadow: 2px 2px 1px #888;
             }
 
-    .dropbtn {
-        background-color: #3498DB;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-      }
-      
-      /* Dropdown button on hover & focus
-      .dropbtn:hover, .dropbtn:focus {
-        background-color: #2980B9;
-      } */
-      
-      /* The container <div> - needed to position the dropdown content */
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-      
-      /* Dropdown Content (Hidden by Default) */
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-      }
-      
-      /* Links inside the dropdown */
-      .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-      }
-      
-      /* Change color of dropdown links on hover */
-      .dropdown-content a:hover {background-color: #ddd}
-      
-      /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-      .show {display:block;}
     </style>
 
 <meta charset="utf-8">
@@ -71,7 +28,7 @@
             As of July 2009, the federal minimum wage is $7.25 an hour. When originally introduced the minimum wage was close to the poverty wage, but over time has has fallen more short as it is not increased to keep up with inflation.
         </p>
     </body>
-
+<!-- 
     <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Display Options</button>
         <div id="myDropdown" class="dropdown-content">
@@ -79,12 +36,12 @@
           <a href="part1V1">Show Inflation</a>
           <a href="part1V2">Show Poverty Levels</a>
         </div>
-      </div>
+      </div> -->
       
       <!-- Create a div where the graph will take place -->
       <div id="my_dataviz"></div>
 
-      <script>
+      <!-- <script>
         /* When the user clicks on the button, 
         toggle between hiding and showing the dropdown content */
         function myFunction() {
@@ -105,7 +62,7 @@
           }
         }
         </script>
-        
+         -->
         <script>
 
             // set the dimensions and margins of the graph
@@ -328,7 +285,7 @@
                     selectedData = data[i]
                   }
                 }
-                var selectedData2 = dataset_2[0]
+                var selectedData2 = null //dataset_2[0]
                 for (var i = 0; i < dataset_2.length; i++) {
                   if (dataset_2[i].Date == xprime) {
                     selectedData2 = dataset_2[i]
